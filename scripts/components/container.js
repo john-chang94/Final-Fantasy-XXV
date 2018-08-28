@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './header';
 import Heroes from './heroes';
-import Villains from './villains';
 import Store from './store';
 
 import Warrior from './images/heroes/warrior.png';
@@ -199,13 +198,6 @@ class Container extends React.Component {
 
     }
 
-    // allows the monster component to be hidden when page is loaded
-    toggleHidden() {
-        this.setState({
-            isHidden: !this.state.isHidden
-        })
-    }
-
     // when Start button is clicked, the first monster will show up
     showMonster() {
         if (this.state.heroes.length == 1) {
@@ -218,7 +210,6 @@ class Container extends React.Component {
             }
             newArray.push(this.state.villains[index])
             this.setState({
-                isHidden: true,
                 currentVillain: newArray
             })
         }
@@ -258,7 +249,6 @@ class Container extends React.Component {
     }
 
     heroAttackMonster(index) {
-
         if (this.state.currentVillain[0] != null) {
 
             if (this.checkMana(index) == false) {
@@ -274,7 +264,6 @@ class Container extends React.Component {
             var newArray = [...this.state.currentVillain]
 
             if (this.state.currentVillain[0].health <= 0) {
-
                 // this is grabbing the next index value from original array after checking if current villain is dead
                 let index = this.state.villainIndex
                 index++
@@ -357,14 +346,12 @@ class Container extends React.Component {
             <div>
                 <Header />
                 <button onClick={this.showMonster.bind(this)}> Start </button>
-                <Heroes toggleHidden={this.toggleHidden.bind(this)}
+                <Heroes 
                     removeHero={this.removeHero.bind(this)}
                     heroAttackMonster={this.heroAttackMonster.bind(this)}
                     monsterAttackHero={this.monsterAttackHero.bind(this)}
-                    heroes={this.state.heroes} />
-                {this.state.isHidden && this.state.currentVillain[0] != null && <Villains
-                    villains={this.state.currentVillain} />}
-                <h3 id="shopHeader"> <span className="badge badge-primary"> Shop </span> </h3>
+                    heroes={this.state.heroes} 
+                    villains={this.state.currentVillain} />} />
                 <Store store={this.state.store}
                     buyPotion={this.buyPotion.bind(this)}
                     buyEther={this.buyEther.bind(this)} />}

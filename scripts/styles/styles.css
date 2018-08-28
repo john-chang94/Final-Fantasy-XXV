@@ -80,7 +80,7 @@ body {
 
 .heroDiv {
     border: solid 1px black;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
 }
 
 .abilitiesDiv {
@@ -107,8 +107,8 @@ body {
 
 .villainDiv {
     border: solid 1px black;
-    margin-top: 3px;
-    margin-bottom: -55px;
+    /* margin-top: 3px; */
+    /* margin-bottom: -55px; */
 }
 
 #villainName {

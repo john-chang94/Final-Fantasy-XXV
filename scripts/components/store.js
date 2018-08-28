@@ -10,6 +10,7 @@ class Store extends React.Component {
     render() {
         return (
             <div className="container">
+            <h3 id="shopHeader"> <span className="badge badge-primary"> Shop </span> </h3>
                 <div className="row">
                     {this.props.store.map((item, index) => {
                         return (
